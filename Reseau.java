@@ -89,14 +89,12 @@ public class Reseau {
 
         this.s = inst.getN();
         this.t = inst.getN()+1;
-        inst.setAlpha(0.5);
 
         for(int i=0; i< inst.getN(); i++) {
             if(inst.getB(i) == 255.0) {
                 set(inst.getN(), i,1.0);
             } else {
-                //puit a 1???
-                set(inst.getN()+1, i, 1.0);
+                set(i, inst.getN()+1, 1.0);
             }
         }
 

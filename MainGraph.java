@@ -25,7 +25,26 @@ public class MainGraph {
         Img im = new Img(data);
         im.creerImage("inputDamierBruite.pgm");
         InstanceDebruitageGraphe instDeb = new InstanceDebruitageGraphe(im);
+        instDeb.setAlpha(0.5);
         System.out.println(instDeb);
+
+        Reseau res = new Reseau(instDeb);
+        System.out.println(res);
+
+        Reseau res2 = new Reseau(4,0,3);
+        res2.set(0,1,2);
+        res2.set(1,2,1);
+        res2.set(2,3,1);
+        res2.set(1,3,1);
+
+        Flot flot = new Flot(res2);
+        flot.modifierFlot(0,1,1);
+        flot.modifierFlot(1,2,1);
+        flot.modifierFlot(2,3,1);
+
+        Reseau residuel = flot.créerReseauResiduel();
+
+        System.out.println(residuel);
 
         /*
         //tests du debruitage sur l'instance de la fin du sujet où l'on doit voir differents output selon la valeur de alpha

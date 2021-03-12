@@ -52,8 +52,19 @@ public class Flot {
      */
     public Reseau créerReseauResiduel() {
         Reseau residuel = new Reseau(reseauF.getN(), reseauF.getS(), reseauF.getT());
-	//à compléter
-	
+
+        for(int i = 0; i < this.reseauF.getN(); i++) {
+            for(int j = 0; j < this.reseauF.getN(); j++) {
+                if(this.reseauF.get(i,j) == this.valeurFlot[i][j] && this.reseauF.get(i,j) != 0) {
+                    residuel.set(j,i, this.valeurFlot[i][j]);
+                } else if(this.reseauF.get(i,j) != 0 && this.valeurFlot[i][j] == 0) {
+                    residuel.set(i,j,this.reseauF.get(i,j));
+                } else if(this.reseauF.get(i,j) != 0 && this.valeurFlot[i][j] != 0) {
+                    residuel.set(i,j, this.reseauF.get(i,j) - this.valeurFlot[i][j]);
+                    residuel.set(j,i, this.valeurFlot[i][j]);
+                }
+            }
+        }
         return residuel;
     }
 
@@ -64,7 +75,9 @@ public class Flot {
      * action : modifie le flot this en ajoutant ou retirant epsilon comme indiqué dans le cours
      */
     public void modifieSelonChemin(ArrayList<Integer> chemin, double epsilon) { 
-	//à compléter
+
+
+
     }
 
 }
